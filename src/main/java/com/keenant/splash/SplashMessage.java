@@ -5,16 +5,17 @@ import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.events.PacketContainer;
 import com.comphenix.protocol.wrappers.EnumWrappers.TitleAction;
 import com.comphenix.protocol.wrappers.WrappedChatComponent;
+import lombok.Getter;
 import org.bukkit.entity.Player;
 
 import java.lang.reflect.InvocationTargetException;
 
 public class SplashMessage {
-    private String title;
-    private String subtitle;
-    private int fadeIn;
-    private int duration;
-    private int fadeOut;
+    @Getter private String title;
+    @Getter private String subtitle;
+    @Getter private int fadeIn;
+    @Getter private int duration;
+    @Getter private int fadeOut;
 
     public SplashMessage(String title, String subtitle, int fadeIn, int duration, int fadeOut) {
         this.title = title;
@@ -22,6 +23,10 @@ public class SplashMessage {
         this.fadeIn = fadeIn;
         this.duration = duration;
         this.fadeOut = fadeOut;
+    }
+
+    public int getTotalDuration() {
+        return this.fadeIn + this.duration + this.fadeOut;
     }
 
     public SplashMessage withTitle(String title) {
